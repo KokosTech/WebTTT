@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>WebTTT</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="~/css/site.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!--<link href="https://unpkg.com/tailwindcss@@^1.0/dist/tailwind.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+</head>
+<body class="h-screen flex flex-col">
+    <header class="fixed w-screen pl-5 pr-5">
+        <nav class="rounded-xl">
+            <div class="nav-wrapper white-text rounded-xl">
+                <a href="#" class="brand-logo hide-on-med-and-down right">WebTTT</a>
+                <ul id="nav-mobile" class="">
+                    <li><a onclick="showCreateScreen()"><i class="material-icons left">add_circle_outline</i>Create TicTacToe</a></li>
+                    <li><a onclick="showConnectScreen()"><i class="material-icons left">power</i>Connect TicTacToe</a></li>
+                    <li><a onclick="showCreateSudokuScreen()"><i class="material-icons left">add_circle_outline</i>Create Sudoku</a></li>
+                    <li><a onclick=""><i class="material-icons left">power</i>Connect Sudoku</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - WebTTT_Test - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
