@@ -1,0 +1,22 @@
+﻿@model List<Cell>
+
+@{
+    ViewData["Title"] = "Solution";
+}
+
+        <div class="div-sudoku-grid">
+            <h2 class="display-4">Solution</h2>
+            <table class="table-sudoku-grid">
+                @for (int row = 0; row < 9; row++)
+                {
+                    <tr class="solved-row">
+                        @for (int column = 0; column < 9; column++)
+                        {
+                        <td class="solved-cell">
+                            @Model[row * 9 + column].Value
+                        </td>
+                        }
+                    </tr>
+                }
+            </table>
+        </div>

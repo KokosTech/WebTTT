@@ -9,6 +9,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using WebTTT_Test.Models;
+using WebTTT_Test.Models.Sudoku;
+using WebTTT_Test.Services;
 
 
 namespace WebTTT_Test
@@ -26,6 +29,8 @@ namespace WebTTT_Test
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddControllersWithViews();
+            services.AddScoped<ISolver, EliminationSolver>();
             services.AddSignalR();
         }
 
@@ -54,11 +59,14 @@ namespace WebTTT_Test
             {
                 endpoints.MapRazorPages();
                 endpoints.MapHub<TTTHub>("/hub");
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Sudoku}/{action=Index}/{id?}");
                 endpoints.MapGet("/getgameslist", async context =>
-                {
-                    string jsonText = System.Text.Json.JsonSerializer.Serialize(GameManager.GetGamesCommonData());
-                    await context.Response.WriteAsync(jsonText);
-                });
+                    {
+                        string jsonText = System.Text.Json.JsonSerializer.Serialize(GameManager.GetGamesCommonData());
+                        await context.Response.WriteAsync(jsonText);
+                    });
             });
         }
     }

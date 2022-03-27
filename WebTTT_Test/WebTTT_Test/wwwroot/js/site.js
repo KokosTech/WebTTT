@@ -63,6 +63,7 @@ const showScreenById = (id) => {
     $('#create-section').addClass('hide')
     $('#connect-section').addClass('hide')
     $('#game-section').addClass('hide')
+    $('#sudoku-section').addClass('hide')
 
     $(id).removeClass('hide')
 }
